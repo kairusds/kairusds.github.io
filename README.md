@@ -153,4 +153,5 @@ You are, of course, welcome to remove it or replace it with another framework. J
 
 ## License
 
+
 The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
