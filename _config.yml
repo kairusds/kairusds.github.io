@@ -30,6 +30,15 @@ projects:
     projects:
       - kairusds.github.io
       - now-examples
+      - nhentai-js
+      - kairusds
+      - Phonograph
+      - android-twitter
+      - LADB
+      - treasure-chest
+      - PocketMine-MP-Android
+      - discord-mini
+      - js.org
 
 social_media:
   # behance: your_username
@@ -43,7 +52,7 @@ social_media:
   # medium: your_username
   # stackoverflow: your_user_id
   # telegram: your_username
-  twitter: hxrvxyhxns
+  # twitter: your_username
   # unsplash: your_username
   # vk: your_username
   # website: http://your_website_url
