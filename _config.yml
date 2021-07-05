@@ -26,7 +26,7 @@ projects:
   limit: 9
   exclude:
     archived: false
-    forks: true
+    forks: false
     projects:
     # - repo-name
 
@@ -42,7 +42,7 @@ social_media:
   # medium: your_username
   # stackoverflow: your_user_id
   # telegram: your_username
-  twitter: kairusds
+  twitter: hxrvxyhxns
   # unsplash: your_username
   # vk: your_username
   # website: http://your_website_url
