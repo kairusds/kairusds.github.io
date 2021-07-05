@@ -28,7 +28,8 @@ projects:
     archived: false
     forks: false
     projects:
-    # - repo-name
+      - kairusds.github.io
+      - now-examples
 
 social_media:
   # behance: your_username
