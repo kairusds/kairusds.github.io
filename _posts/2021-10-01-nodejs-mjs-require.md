@@ -16,4 +16,4 @@ const path = require("path");
 And now you should be able to require any CommonJS modules even
 from an ES module (.mjs) or TypeScript. Enjoy!
 
-Source: <https://nodejs.org/api/module.html#module_module_createrequire_filename>
+[Source](https://nodejs.org/api/module.html#module_module_createrequire_filename)
