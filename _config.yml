@@ -29,6 +29,9 @@ projects:
     forks: false
     projects:
       - treasure-chest
+      - rvcd-backup
+      - tModLoader
+      - kairusds
       - PocketMine-MP-Android
       - js.org
 
