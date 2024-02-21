@@ -15,18 +15,18 @@ Commands:
 
 **Check the status of an anti-cheat driver:**
 
-```bat
+```
 sc query DRIVER_NAME
 ```
 
 **Stop an anti-cheat driver:**
 
-```bat
+```
 sc stop DRIVER_NAME
 ```
 
 **Completely delete/uninstall an anti-cheat driver:**
 
-```bat
+```
 sc delete DRIVER_NAME
 ```
