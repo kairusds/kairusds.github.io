@@ -1,4 +1,4 @@
-layout: sidebar
+layout: stacked
 style: dark
 
 repository: kairusds/kairusds.github.io
@@ -11,19 +11,18 @@ plugins:
 permalink: /:year/:month/:day/:title/
 
 defaults:
-  -
-    scope:
-      path: "" # an empty string here means all files in the project
-      type: "posts"
-    values:
-      layout: "post"
+  scope:
+    path: "" # an empty string here means all files in the project
+    type: "posts"
+  values:
+    layout: "post"
 
 projects:
-  sort_by: pushed
-  sort_by options:
-    - pushed
-    - stars
-  limit: 10
+  sort_by: stars
+  # sort_by options:
+  #   - pushed
+  #   - stars
+  limit: 7
   exclude:
     archived: false
     forks: false
@@ -47,7 +46,7 @@ social_media:
   # medium: your_username
   # stackoverflow: your_user_id
   # telegram: your_username
-  twitter: hxrvxyhxns
+  # twitter: your_username
   # unsplash: your_username
   # vk: your_username
   # website: http://your_website_url
