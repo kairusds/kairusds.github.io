@@ -1,5 +1,5 @@
 ---
-title: "Misc stuff for Kernel-level Anti-cheats on Windows"
+title: "Miscellaneous stuff for Kernel-level Anti-cheats on Windows"
 published: true
 ---
 
