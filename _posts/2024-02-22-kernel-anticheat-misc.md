@@ -1,6 +1,6 @@
 ---
 title: "Miscellaneous stuff for Kernel-level Anti-cheats on Windows"
-published: false
+published: true
 ---
 
 Run either `Command Prompt` or `Terminal` as an administrator.
