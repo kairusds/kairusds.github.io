@@ -1,6 +1,6 @@
 ---
 title: "Miscellaneous stuff for Kernel-level Anti-cheats on Windows"
-published: true
+published: false
 ---
 
 Run either `Command Prompt` or `Terminal` as an administrator.
@@ -8,7 +8,7 @@ Run either `Command Prompt` or `Terminal` as an administrator.
 Driver names for kernel-level anti-cheats:
 - xhunter1 - XIGNCODE3
 - mhyprot2 - Genshin Impact
-- unifairy - Hokai: Star Rail
+- unifairy - Honkai: Star Rail
 - EasyAntiCheat_EOS - Easy Anti-Cheat
 
 Commands:
