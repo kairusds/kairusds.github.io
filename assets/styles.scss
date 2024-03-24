@@ -33,10 +33,14 @@
   }
 
   blockquote {
-    color: #6a737d;
-    border-left: 2px solid #959da5;
-    padding-left: 16px;
-    margin-bottom: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    overflow: auto;
   }
 
   ul, ol {
