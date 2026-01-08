@@ -37,6 +37,7 @@ projects:
       - js.org
 
 social_media:
+  codeberg: kairusds
   # behance: your_username
   # dribbble: your_username
   # facebook: your_username
@@ -55,14 +56,18 @@ social_media:
   # youtube: your_username
 
 topics:
+  - name: Rust
+    web_url: https://github.com/topics/rust
+    image_url: https://raw.githubusercontent.com/github/explore/refs/heads/main/topics/rust/rust.png
+
   - name: JavaScript
     web_url: https://github.com/topics/javascript
-    image_url: https://raw.githubusercontent.com/github/explore/6c6508f34230f0ac0d49e847a326429eefbfc030/topics/javascript/javascript.png
+    image_url: https://raw.githubusercontent.com/github/explore/refs/heads/main/topics/javascript/javascript.png
 
   - name: Java
     web_url: https://github.com/topics/java
-    image_url: https://raw.githubusercontent.com/github/explore/6c6508f34230f0ac0d49e847a326429eefbfc030/topics/java/java.png
+    image_url: https://raw.githubusercontent.com/github/explore/refs/heads/main/topics/java/java.png
 
   - name: Python
     web_url: https://github.com/topics/python
-    image_url: https://raw.githubusercontent.com/github/explore/6c6508f34230f0ac0d49e847a326429eefbfc030/topics/python/python.png
+    image_url: https://raw.githubusercontent.com/github/explore/refs/heads/main/topics/python/python.png
