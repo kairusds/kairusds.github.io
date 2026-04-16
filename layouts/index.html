@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#121212">
+	<link rel="icon" type="image/png" href="{{ .Site.Params.avatar | relURL }}">
+	<link rel="apple-touch-icon" href="{{ .Site.Params.avatar | relURL }}">
+	<title>{{ .Site.Title }}</title>
+	<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+	<style>
+		:root {
+			--md-bg: #121212;
+			--md-surface: #1e1e1e;
+			--md-primary: #bb86fc;
+		}
+
+		body { background-color: var(--md-bg); color: #e1e1e1; scroll-behavior: smooth; margin: 0; font-family: sans-serif; }
+		.material-card { background-color: var(--md-surface); box-shadow: 0 4px 12px rgba(0,0,0,0.5); border: 1px solid #2d2d2d; }
+		
+		#viewport { opacity: 0; transition: opacity 0.8s ease-out; }
+		#viewport.visible { opacity: 1; }
+
+		@keyframes glint {
+			0% { background-position: -200%; }
+			100% { background-position: 200%; }
+		}
+		.enchanted-text {
+			background: linear-gradient(90deg, #e1e1e1 0%, var(--md-primary) 25%, #e1e1e1 50%, var(--md-primary) 75%, #e1e1e1 100%);
+			background-size: 200% auto;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			animation: glint 4s linear infinite;
+			font-weight: bold;
+		}
+
+		.repo-hidden { opacity: 0; transform: translateY(10px); }
+		.repo-visible { 
+			opacity: 1; 
+			transform: translateY(0); 
+			transition: opacity 0.5s ease, transform 0.5s ease;
+		}
+
+		::-webkit-scrollbar { width: 6px; }
+		::-webkit-scrollbar-track { background: var(--md-bg); }
+		::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+		::-webkit-scrollbar-thumb:hover { background: var(--md-primary); }
+
+		.material-card:active {
+			transform: scale(0.98);
+			background-color: #252525;
+			transition: transform 0.1s ease;
+		}
+	</style>
+</head>
+<body class="p-4 md:p-12 min-h-screen flex justify-center">
+
+	<div id="viewport" class="max-w-6xl w-full flex flex-col md:flex-row gap-8">
+		<aside class="md:w-1/4 flex-shrink-0">
+			<div class="material-card rounded-2xl p-8 flex flex-col items-center text-center sticky top-12">
+				<div class="w-32 h-32 rounded-full bg-zinc-900 mb-6 overflow-hidden border-2 border-zinc-700">
+					<img src="{{ .Site.Params.avatar | relURL }}" alt="{{ .Site.Title }}" loading="eager" class="w-full h-full object-cover">
+				</div>
+				<h1 class="text-3xl enchanted-text">{{ .Site.Title }}</h1>
+				<p class="text-zinc-600 text-sm mt-3 font-mono lowercase tracking-tighter">{{ .Site.Params.bio }}</p>
+				
+				<div class="flex gap-4 justify-center mt-6">
+					{{ range .Site.Params.links }}
+					<a href="{{ .url }}" target="_blank" aria-label="{{ .name }}" class="text-zinc-500 hover:text-[#bb86fc] transition-colors">
+						{{ .icon | safeHTML }}
+					</a>
+					{{ end }}
+				</div>
+			</div>
+		</aside>
+
+		<main class="md:w-3/4 w-full">
+			<div class="mb-10">
+				<h2 class="text-zinc-500 font-mono lowercase tracking-tighter mb-4 ml-1">// projects</h2>
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+
+					{{ $url := printf "https://api.github.com/users/%s/repos?per_page=100" .Site.Params.github_username }}
+					{{ with try (resources.GetRemote $url) }}
+					{{ with .Err }}
+					{{ warnf "Unable to fetch GitHub repos: %s" . }}
+					{{ else }}
+					{{ $repos := .Value.Content | transform.Unmarshal }}
+					{{ $sortedRepos := sort $repos "stargazers_count" "desc" }}
+
+					{{ range first 6 $sortedRepos }}
+					<a href="{{ .html_url }}" target="_blank" class="material-card p-6 rounded-2xl border border-transparent hover:border-zinc-700 hover:shadow-xl md:hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between no-underline repo-hidden card-anim">
+						<div>
+							<div class="flex justify-between items-start mb-3">
+								<h3 class="font-bold text-[#bb86fc] group-hover:text-white transition-colors truncate">{{ .name }}</h3>
+								<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-900 text-zinc-500 border border-zinc-800">{{ default "??" .language }}</span>
+							</div>
+							<p class="text-xs text-zinc-400 mb-6 line-clamp-2 italic">{{ default "Too lazy to write a description." .description }}</p>
+						</div>
+						<div class="flex items-center gap-5 text-[11px] font-mono text-zinc-400">
+							<span class="flex items-center gap-1 group-hover:text-white transition-colors">
+								<span class="text-[#bb86fc]">★</span> {{ .stargazers_count }}
+							</span>
+							<span class="flex items-center gap-1 group-hover:text-white transition-colors">
+								<span class="text-[#bb86fc]">Y</span> {{ .forks_count }}
+							</span>
+						</div>
+					</a>
+					{{ end }}
+					{{ end }}
+					{{ end }}
+				</div>
+			</div>
+
+			<div>
+				<h2 class="text-zinc-500 font-mono lowercase tracking-tighter mb-4 ml-1 mt-12">// posts</h2>
+				<div class="grid grid-cols-1 gap-4">
+					{{ range .Site.RegularPages }}
+					<a href="{{ .Permalink }}" class="material-card p-6 rounded-2xl border border-transparent hover:border-zinc-700 hover:shadow-xl md:hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between no-underline repo-hidden card-anim">
+						<div class="flex justify-between items-start mb-3">
+							<h3 class="font-bold text-[#bb86fc] group-hover:text-white transition-colors truncate">{{ .Title }}</h3>
+							<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-900 text-zinc-500 border border-zinc-800">{{ .Date.Format "Jan 02, 2006" }}</span>
+						</div>
+						<p class="text-xs text-zinc-400 line-clamp-2 italic">{{ .Plain | truncate 150 }}</p>
+					</a>
+					{{ end }}
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<script>
+		window.addEventListener("DOMContentLoaded", () => {
+			document.getElementById("viewport").classList.add("visible");
+
+			const cards = document.querySelectorAll(".card-anim");
+			cards.forEach((card, index) => {
+				setTimeout(() => card.classList.add("repo-visible"), index * 100);
+			});
+		});
+	</script>
+</body>
+</html>
